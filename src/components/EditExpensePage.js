@@ -6,31 +6,37 @@ import ExpanseForm from './ExpenseForm';
 export class EditExpensePage extends React.Component {
 
     onSubmit = (expense) => {
-        this.props.onSubmit(expense);
+        this.props.editExpense(this.props.expense.id, expense);
         this.props.history.push('/');
     }
 
-    onClick = (expense) => {
-        this.props.onClick(expense);
+    onRemove = () => {
+        this.props.removeExpense({ id: this.props.expense.id });
         this.props.history.push('/');
     }
 
     render () {
-        <div>
-            <ExpanseForm 
-                expense={this.props.expense}
-                onSubmit={this.onSubmit}
-            />
-            <button 
-                onClick={this.onClick}
-            >Remove</button>
-        </div>
+        return (
+            <div>
+                <ExpanseForm 
+                    expense={this.props.expense}
+                    onSubmit={this.onSubmit}
+                />
+                <button 
+                    onClick={this.onRemove}
+                >Remove</button>
+            </div>
+        );
     }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    onSubmit: (expense) => dispatch(editExpense(expense)),
-    onClick: (expense) => dispatch(removeExpense({ id: expense.id }))
+const mapDispatchToProps = (dispatch, props) => ({
+    editExpense: (id, expense) => dispatch(editExpense(id, expense)),
+    removeExpense: (data) => dispatch(removeExpense(data))
 });
 
-export default connect(undefined, mapDispatchToProps)(EditExpensePage);
+const mapStateToProps = (state, props) => ({
+    expense: state.expenses.find(expense => expense.id === props.match.params.id)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditExpensePage);
