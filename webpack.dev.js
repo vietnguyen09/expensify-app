@@ -7,6 +7,7 @@ const common = require('./webpack.common.js');
     devtool: 'inline-cheap-source-map',
     devServer: {
         contentBase: path.join(__dirname, 'public'),
-        historyApiFallback: true
+        historyApiFallback: true,
+        publicPath: '/dist/'
     }
  });
