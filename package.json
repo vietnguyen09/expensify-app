@@ -26,6 +26,7 @@
     "moment": "^2.29.1",
     "node-sass": "^5.0.0",
     "normalize.css": "^8.0.1",
+    "numeral": "^2.0.6",
     "raf": "^3.4.1",
     "react": "^17.0.2",
     "react-dates": "^21.8.0",
@@ -42,16 +43,16 @@
     "webpack-cli": "^4.6.0"
   },
   "devDependencies": {
-    "html-webpack-plugin": "^5.3.1",
-    "mini-css-extract-plugin": "^1.6.0",
-    "webpack-merge": "^5.7.3",
-    "enzyme": "^3.11.0",
-    "enzyme-to-json": "^3.6.1",
     "@types/jest": "^26.0.23",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.0",
+    "enzyme": "^3.11.0",
+    "enzyme-to-json": "^3.6.1",
+    "html-webpack-plugin": "^5.3.1",
     "jest": "^26.6.3",
     "live-server": "^1.2.1",
+    "mini-css-extract-plugin": "^1.6.0",
     "react-test-renderer": "^17.0.2",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
   }
 }
