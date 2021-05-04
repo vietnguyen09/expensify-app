@@ -8,7 +8,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
-import './firebase/firebase';
+import { firebase } from './firebase/firebase';
 
 const store = configureStore();
 
@@ -18,8 +18,18 @@ const jsx = (
     </Provider>
 );
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
 
+const root = document.getElementById('app');
+ReactDOM.render(<p>Loading...</p>, root);
 store.dispatch(startSetExpenses()).then(() => {
-    ReactDOM.render(jsx, document.getElementById('app'));
+    ReactDOM.render(jsx, root);
+});
+
+
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        console.log('Log in');
+    } else {
+        console.log('Log out');
+    }
 });
